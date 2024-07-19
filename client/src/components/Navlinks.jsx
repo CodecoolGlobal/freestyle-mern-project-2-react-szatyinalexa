@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
-
-import meows from './audio';
+import { Link } from "react-router-dom";
+import useUser from "../hooks/useUser";
+import meows from "./audio";
 
 function playRandomMeow() {
   const randomNum = Math.floor(Math.random() * (meows.length - 0));
@@ -9,14 +9,29 @@ function playRandomMeow() {
 }
 
 function Navlinks() {
+  const [user] = useUser();
+
   return (
-    <div className='buttons'>
+    <div className="buttons">
       <button onClick={playRandomMeow}>Meow</button>
-      <Link to={'/game'}><button>Play</button></Link>
-      <Link to={'/scoreboard'}><button>Scoreboard</button></Link>
-      <Link to={'/user-profile'}><button>User Profile</button></Link>
+      <Link to={"/game"}>
+        <button>Play</button>
+      </Link>
+      <Link to={"/scoreboard"}>
+        <button>Scoreboard</button>
+      </Link>
+
+      {user ? (
+        <Link to={"/user-profile"}>
+          <button>{user}</button>
+        </Link>
+      ) : (
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
+      )}
     </div>
-  )
+  );
 }
 
-export default Navlinks
+export default Navlinks;

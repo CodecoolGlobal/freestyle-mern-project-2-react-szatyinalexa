@@ -1,4 +1,4 @@
-import User from "../model/User";
+import User from "../model/User.js";
 
 // Add a new user
 export const addUser = async (req, res) => {
@@ -12,7 +12,7 @@ export const addUser = async (req, res) => {
     //console.log('New user: ', newUser);
     res.json(newUser);
   } catch (error) {
-    //console.error(error);
+    console.error(error);
     res
       .status(500)
       .json({ message: "Server error, unable to register new user" });

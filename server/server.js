@@ -2,6 +2,7 @@ import { config } from 'dotenv';
 import mongoose from 'mongoose';
 import express from 'express';
 import User from './model/User.js';
+import userRoutes from './routes/userRoutes.js';
 
 config();
 
@@ -9,11 +10,14 @@ const app = express();
 
 app.use(express.json());
 
+// Register Routes
+app.use("/api/users", userRoutes);
+
 async function main() {
 	await mongoose.connect(process.env.DATABASE_URL);
 
 	// ADD NEW USER
-	app.post('/api/users', async (req, res) => {
+	/*app.post('/api/users', async (req, res) => {
 		console.log('POST /api/users to add new user');
 		console.log('Request body: ', req.body);
 
@@ -53,10 +57,10 @@ async function main() {
 		} catch (error) {
 			console.error(error);
 		}
-	});
+	});*/
 
 	//FIND LOGGED IN USER
-	app.post('/api/user', async (req, res) => {
+	/*app.post('/api/user', async (req, res) => {
 		console.log('POST /api/user check if user registered');
 		console.log('Request body: ', req.body);
 
@@ -75,10 +79,10 @@ async function main() {
 			console.error(error);
 			res.status(500).json('Server error, unable to login user');
 		}
-	});
+	});*/
 
 	//DELETE USER ACCOUNT
-	app.delete(`/api/user/:id`, async (req, res) => {
+	/*app.delete(`/api/user/:id`, async (req, res) => {
 		console.log('DELETE /api/user/:id');
 		console.log('Request params:', req.params);
 
@@ -94,11 +98,11 @@ async function main() {
 			console.error('Error deleting user:', error);
 			res.status(500).json({ success: false, message: error.message });
 		}
-	});
+	});*/
 
 
     //UPDATE USER 
-	app.patch('/api/user/:id', async (req, res) => {
+	/*app.patch('/api/user/:id', async (req, res) => {
 		console.log('PATCH /api/user/:id ');
 		console.log('Request params:', req.params);
 		console.log('Request body:', req.body);
@@ -112,7 +116,7 @@ async function main() {
         } catch (error) {
             res.status(500).json({ success: false, message: error.message });
         }
-	});
+	});*/
 
 	app.listen(3000, () =>
 		console.log({ message: 'Server is running on port 3000' })

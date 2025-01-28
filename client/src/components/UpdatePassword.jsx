@@ -23,7 +23,7 @@ function UpdatePassword() {
 							name='old-password'
 							type="password"
 							value={currentPassword}
-							onChange={(even) => setCurrentPassword(event.target.value)}
+							onChange={(event) => setCurrentPassword(event.target.value)}
 						/>
 					</label>
 					<br />

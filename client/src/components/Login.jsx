@@ -20,7 +20,7 @@ function Login() {
             body: JSON.stringify(data),
         };
 
-        fetch('/api/user', options)
+        fetch('/api/users/login', options)
             .then((response) => response.json())
             .then((result) => {
                 if (result.success) {

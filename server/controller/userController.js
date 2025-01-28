@@ -80,11 +80,11 @@ export const deleteUser = async (req, res) => {
 // Update a user
 export const updateUser = async (req, res) => {
   try {
-    const updateUser = await User.findById(req.params.id, {
+    const updatedUser = await User.findById(req.params.id, {
       ...req.body,
       updatedAt: Date.now(),
     });
-    res.json("Updated user: ", updateUser);
+    res.json("Updated user: ", updatedUser);
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

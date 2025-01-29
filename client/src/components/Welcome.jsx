@@ -1,19 +1,21 @@
-import { useEffect, useState } from "react";
+//import { useEffect, useState } from "react";
 import Navbar from "./Navbar.jsx";
+import useUser from "../hooks/useUser.js";
 import "../navbar.css";
 
 function Welcome() {
   const paw = "🐾";
   const cat = "😺";
-  const [user, setUser] = useState("");
+  //const [user, setUser] = useState("");
+  const [user] = useUser();
 
-  useEffect(() => {
+  /*useEffect(() => {
     const loggedInUser = localStorage.getItem("user");
     if (loggedInUser) {
       const userObject = JSON.parse(loggedInUser);
       setUser(userObject.name);
     }
-  }, []);
+  }, []);*/
 
   return (
     <>

@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import useUser from '../hooks/useUser';
 
 import meows from './audio';
 
@@ -9,12 +10,18 @@ function playRandomMeow() {
 }
 
 function Navlinks() {
+  const [user] = useUser();
+
   return (
     <div className='buttons'>
       <button onClick={playRandomMeow}>Meow</button>
       <Link to={'/game'}><button>Play</button></Link>
       <Link to={'/scoreboard'}><button>Scoreboard</button></Link>
-      <Link to={'/user-profile'}><button>User Profile</button></Link>
+      {user ? (
+        <Link to={'/user-profile'}><button>{user}</button></Link>
+      ) : (
+      <Link to={'/user-profile'}><button>Login</button></Link>
+      )}
     </div>
   )
 }

@@ -7,8 +7,28 @@ import '../form.css';
 function UpdatePassword() {
 	const [currentPassword, setCurrentPassword] = useState('');
 	const [newPassword, setNewPassword] = useState('');
+	const navigate = useNavigate();
 
-	function handleUpdatePassword() {}
+	async function handleUpdatePassword(id) {
+		const options = {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(newPassword),
+		};
+
+		try {
+			const response = await fetch(`/api/users/${id}`, options);
+			if (response.ok) {
+                navigate('/user-profile');
+			} else {
+				console.error('Failed to update user');
+			}
+		} catch (error) {
+			console.error('Internal server error', error);
+		}
+	}
 
 	return (
 		<>

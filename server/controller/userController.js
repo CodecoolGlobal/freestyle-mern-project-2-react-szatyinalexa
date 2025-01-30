@@ -6,7 +6,10 @@ export const addUser = async (req, res) => {
     const { name } = req.body;
     const existingUser = await User.findOne({ name });
 
-    if (existingUser) return res.status(400).json({ success: false, message: `Username ${name} is already taken`});
+    if (existingUser)
+      return res
+        .status(400)
+        .json({ success: false, message: `Username ${name} is already taken` });
 
     const newUser = await User.create({
       name: req.body.name,
@@ -14,7 +17,7 @@ export const addUser = async (req, res) => {
       score: 0,
       createdAt: Date.now(),
     });
-    //console.log('New user: ', newUser);
+
     res.json(newUser);
   } catch (error) {
     console.error(error);
@@ -38,9 +41,8 @@ export const getUsers = async (req, res) => {
 // Get users with scores
 export const getUsersWithScores = async (req, res) => {
   try {
-    const users = await User.find({});
-    const sortedUsers = [...users].sort((a, b) => a.score - b.score);
-    const usersWithScores = sortedUsers.filter((user) => user.score > 0);
+    const users = await User.find({ score: { $gt: 0 } });
+    const usersWithScores = [...users].sort((a, b) => b.score - a.score);
     res.json(usersWithScores);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -55,19 +57,18 @@ export const findUser = async (req, res) => {
       password: req.body.password,
     });
     if (user) {
-      //console.log("Already registered: ", user.name);
+
       const userData = {
         id: user._id,
         name: user.name,
-        score: user.score
-      }
+        score: user.score,
+      };
       res.json({ success: true, user: userData });
     } else {
       res.json({ success: false, message: "User not found." });
     }
   } catch (error) {
-    //console.error(error);
-    res.status(500).json({ message: "Server error, unable to login user"});
+    res.status(500).json({ message: "Server error, unable to login user" });
   }
 };
 
@@ -75,14 +76,12 @@ export const findUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
   try {
     const result = await User.deleteOne({ _id: req.params.id });
-    //console.log("Delete result: ", result);
     if (result.deletedCount === 1) {
       res.json({ success: true, message: "User deleted successfully" });
     } else {
       res.status(404).json({ success: false, message: "User not found." });
     }
   } catch (error) {
-    //console.error("Error deleting user:", error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
@@ -98,7 +97,9 @@ export const updateUser = async (req, res) => {
       },
       { new: true }
     );
-    res.status(200).json({ success: true, message: "User updated successfully"});
+    res
+      .status(200)
+      .json({ success: true, message: "User updated successfully" });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

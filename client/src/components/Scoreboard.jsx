@@ -37,7 +37,7 @@ function Scoreboard() {
                         <tr>
                             <th></th>
                             <th>Name</th>
-                            <th>Best time</th>
+                            <th>Score</th>
                             <th></th>
                         </tr>
                     </thead>

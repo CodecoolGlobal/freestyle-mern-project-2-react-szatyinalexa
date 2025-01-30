@@ -51,18 +51,23 @@ export const getUsersWithScores = async (req, res) => {
 export const findUser = async (req, res) => {
   try {
     const user = await User.findOne({
-      name: req.body.name,
+      name: req.body.userName,
       password: req.body.password,
     });
     if (user) {
       //console.log("Already registered: ", user.name);
-      res.json({ success: true, user: user });
+      const userData = {
+        id: user._id,
+        name: user.name,
+        score: user.score
+      }
+      res.json({ success: true, user: userData });
     } else {
       res.json({ success: false, message: "User not found." });
     }
   } catch (error) {
     //console.error(error);
-    res.status(500).json("Server error, unable to login user");
+    res.status(500).json({ message: "Server error, unable to login user"});
   }
 };
 
@@ -93,7 +98,7 @@ export const updateUser = async (req, res) => {
       },
       { new: true }
     );
-    res.json("Updated user: ", updatedUser);
+    res.status(200).json({ success: true, message: "User updated successfully"});
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

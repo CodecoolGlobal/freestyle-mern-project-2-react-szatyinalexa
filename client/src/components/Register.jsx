@@ -4,8 +4,9 @@ import Logo from './Logo';
 import '../form.css';
 
 function Register() {
-	const [name, setName] = useState('');
+	const [userName, setUserName] = useState('');
 	const [password, setPassword] = useState('');
+
 	const [error, setError] = useState('');
 	const navigate = useNavigate();
     const paw = '🐾';
@@ -14,7 +15,7 @@ function Register() {
 	async function handleSubmit(event) {
 		event.preventDefault();
 
-		const body = { name, password };
+		const body = { userName, password };
 
 		try {
 			const response = await fetch('/api/users', {
@@ -29,7 +30,7 @@ function Register() {
 				setError(data.message);
 				console.log(error)
 				alert(error);
-				setName('');
+				setUserName('');
 				setPassword('');
 			} else {
 				if (error) setError('');
@@ -39,23 +40,6 @@ function Register() {
 		} catch (error) {
 			setError(`Authentication failed. ${error}`);
 		}
-
-		/*fetch('/api/users', options)
-			.then((response) => {
-				const responseJson = response.json();
-				if (!response.ok) {
-					console.log(responseJson);
-					setError(responseJson.message);
-				}
-				return responseJson;
-			})
-			.then((user) => {
-				console.log(user);
-                localStorage.setItem('user', JSON.stringify(user));
-				navigate('/Welcome');
-			})
-
-			.catch((error) => console.error(error));*/
 	}
 
 	return (
@@ -69,8 +53,8 @@ function Register() {
 					id="username-register-input"
 					name="username"
 					type="text"
-					value={name}
-					onChange={(event) => setName(event.target.value)}
+					value={userName}
+					onChange={(event) => setUserName(event.target.value)}
 				></input>
 				<br />
 				{/*error && <p className='register-error'>{error}</p>*/}

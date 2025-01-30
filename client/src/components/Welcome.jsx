@@ -6,16 +6,7 @@ import "../navbar.css";
 function Welcome() {
   const paw = "🐾";
   const cat = "😺";
-  //const [user, setUser] = useState("");
   const [user] = useUser();
-
-  /*useEffect(() => {
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      const userObject = JSON.parse(loggedInUser);
-      setUser(userObject.name);
-    }
-  }, []);*/
 
   return (
     <>

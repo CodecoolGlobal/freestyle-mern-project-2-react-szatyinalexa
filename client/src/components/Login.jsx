@@ -32,6 +32,8 @@ function Login() {
         if (error) setError("");
         console.log(data);
         localStorage.setItem('user', JSON.stringify(data.user));
+		localStorage.setItem('userId', data.user.id);
+		localStorage.setItem('userName', data.user.name);
         navigate("/welcome");
       }
     } catch (error) {

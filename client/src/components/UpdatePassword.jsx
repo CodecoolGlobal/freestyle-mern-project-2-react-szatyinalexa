@@ -6,20 +6,24 @@ import '../form.css';
 
 function UpdatePassword() {
 	const [currentPassword, setCurrentPassword] = useState('');
-	const [newPassword, setNewPassword] = useState('');
+	const [password, setPassword] = useState('');
 	const navigate = useNavigate();
 
-	async function handleUpdatePassword(id) {
+	async function handleUpdatePassword(event) {
+		event.preventDefault();
+
+		const body = { password }
 		const options = {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(newPassword),
+			body: JSON.stringify( body ),
 		};
 
 		try {
-			const response = await fetch(`/api/users/${id}`, options);
+			const userId = JSON.parse(localStorage.getItem('user')).id;
+			const response = await fetch(`/api/users/${userId}`, options);
 			if (response.ok) {
                 navigate('/user-profile');
 			} else {
@@ -53,8 +57,8 @@ function UpdatePassword() {
 							id="password-update-input"
 							name='new-password'
 							type="password"
-							value={newPassword}
-							onChange={(event) => setNewPassword(event.target.value)}
+							value={password}
+							onChange={(event) => setPassword(event.target.value)}
 						/>
 					</label>
 					<br />

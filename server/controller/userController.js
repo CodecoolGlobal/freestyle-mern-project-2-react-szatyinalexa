@@ -57,6 +57,7 @@ export const findUser = async (req, res) => {
     if (user) {
       //console.log("Already registered: ", user.name);
       const userData = {
+        id: user._id,
         name: user.name,
         score: user.score
       }
@@ -97,7 +98,7 @@ export const updateUser = async (req, res) => {
       },
       { new: true }
     );
-    res.json("Updated user: ", updatedUser);
+    res.status(200).json({ success: true, message: "User updated successfully"});
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }

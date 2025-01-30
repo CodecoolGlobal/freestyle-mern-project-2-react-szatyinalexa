@@ -4,9 +4,10 @@ export default function useUser() {
   const [user, setUser] = useState('');
 
 	useEffect(() => {
-		const loggedInUser = localStorage.getItem('userName');
+		const loggedInUser = localStorage.getItem('user');
 		if (loggedInUser) {
-            setUser(loggedInUser);
+			const userObject = JSON.parse(loggedInUser);
+			setUser(userObject.name);
 		}
 	}, []);
 

@@ -31,7 +31,7 @@ function Login() {
       } else {
         if (error) setError("");
         console.log(data);
-        localStorage.setItem("userName", data.user.name);
+        localStorage.setItem('user', JSON.stringify(data.user));
         navigate("/welcome");
       }
     } catch (error) {

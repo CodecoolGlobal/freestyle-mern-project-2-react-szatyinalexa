@@ -11,7 +11,7 @@ function playRandomMeow() {
 
 function Navlinks() {
   const [user] = useUser();
-
+  console.log(user ? user : "it's falsy");
   return (
     <div className='buttons'>
       <button onClick={playRandomMeow}>Meow</button>
@@ -20,7 +20,7 @@ function Navlinks() {
       {user ? (
         <Link to={'/user-profile'}><button>{user}</button></Link>
       ) : (
-      <Link to={'/user-profile'}><button>Login</button></Link>
+      <Link to={'/'}><button>Login</button></Link>
       )}
     </div>
   )

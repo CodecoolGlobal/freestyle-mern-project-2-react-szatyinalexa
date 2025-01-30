@@ -56,7 +56,11 @@ export const findUser = async (req, res) => {
     });
     if (user) {
       //console.log("Already registered: ", user.name);
-      res.json({ success: true, user: user });
+      const userData = {
+        name: user.name,
+        score: user.score
+      }
+      res.json({ success: true, user: userData });
     } else {
       res.json({ success: false, message: "User not found." });
     }

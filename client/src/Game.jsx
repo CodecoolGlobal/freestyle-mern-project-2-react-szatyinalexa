@@ -153,13 +153,13 @@ function Game() {
       <Navbar />
       <div className="game">
         {winner ? (
-          <>
+          <div className="winner-container">
             <h1 className="winner-message">
               Congratulations, you matched all the kitties!
               {playPurr()}
+              <h3 className="current-score">Score: {user?.score}</h3>
             </h1>
-            <h3 className="current-score">Score: {user?.score}</h3>
-          </>
+          </div>
         ) : cats ? (
           cats.map((cat) => {
             return (

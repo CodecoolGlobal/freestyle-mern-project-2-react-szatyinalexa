@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 import '../navbar.css';
+import useUser from '../hooks/useUser.js';
 
 function UserProfile() {
-	const [user, setUser] = useState(null);
+	const [user] = useUser();
 	const navigate = useNavigate();
 
-	useEffect(() => {
+	/*useEffect(() => {
 		const loggedInUser = localStorage.getItem('user');
 
 		if (loggedInUser) {
@@ -16,7 +17,7 @@ function UserProfile() {
 		} else {
 			navigate('/');
 		}
-	}, []);
+	}, []);*/
 
 	function handleLogout() {
 		localStorage.removeItem('user');
@@ -59,7 +60,7 @@ function UserProfile() {
 					<h2>User Profile</h2>
 					<br />
 					<p>{user.name}</p>
-					<p>Highest Score: {user.score}</p><br /><br />
+					<p>Score: {user.score}</p><br /><br />
                     <Link to="/update-password">
 						<button type="button">
                         Update Password

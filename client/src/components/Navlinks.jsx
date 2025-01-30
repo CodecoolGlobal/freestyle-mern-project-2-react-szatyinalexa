@@ -18,7 +18,7 @@ function Navlinks() {
       <Link to={'/game'}><button>Play</button></Link>
       <Link to={'/scoreboard'}><button>Scoreboard</button></Link>
       {user ? (
-        <Link to={'/user-profile'}><button>{user}</button></Link>
+        <Link to={'/user-profile'}><button>{user.name}</button></Link>
       ) : (
       <Link to={'/'}><button>Login</button></Link>
       )}

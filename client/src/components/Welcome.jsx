@@ -23,7 +23,7 @@ function Welcome() {
         </h1>
         <br />
         <h2>
-          Welcome <span>{user.toUpperCase()}</span> to the Purrfectly Pawsome
+          Welcome <span>{user?.name.toUpperCase()}</span> to the Purrfectly Pawsome
           Memory Game!
         </h2>
         <br />

@@ -16,6 +16,9 @@ function Game (){
     const [stopFlip, setStopFlip] = useState(false);
     const [winner, setWinner] = useState(false)
     const [imgCount, setImgCount] = useState(6);
+    
+    const playerStartingScore = JSON.parse(localStorage.getItem('user')).score;
+    const [score, setScore] = useState(playerStartingScore);
 
     function shuffleDeck(array){
         for(let i = array.length - 1; i > 0; i--){

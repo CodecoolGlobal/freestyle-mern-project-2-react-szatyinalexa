@@ -1,77 +1,81 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Logo from './Logo';
-import '../form.css'
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "./Logo";
+import "../form.css";
 
 function Login() {
-	const [name, setName] = useState('');
-	const [password, setPassword] = useState('');
-	const navigate = useNavigate();
-	const paw = '🐾';
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
-	function handleSubmit(event) {
-        event.preventDefault();
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const paw = "🐾";
 
-        const data = {name, password};
+  async function handleSubmit(event) {
+    event.preventDefault();
 
-        const options = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(data),
-        };
+    const body = { userName, password };
 
-        fetch('/api/users/login', options)
-            .then((response) => response.json())
-            .then((result) => {
-                if (result.success) {
-                    console.log('Result on frontend: ', result.user)
-                    localStorage.setItem('user', JSON.stringify(result.user));
-                    navigate('/welcome');
-                } else {
-                    console.log('Login failed:', result.message);
-                    alert('Not a registered user. Please register.')
-                    navigate('/register');
-                }
-            })
-            .catch((error) => console.log('Error:', error));
+    try {
+      const response = await fetch("/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
 
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message);
+        alert(error);
+      } else {
+        if (error) setError("");
+        console.log(data);
+        localStorage.setItem("userName", data.user.name);
+        navigate("/welcome");
+      }
+    } catch (error) {
+      setError(`Authentication failed. ${error}`);
     }
+  }
 
-	return (
-        <>
-        <Logo/>
-		<div className="login-container">
-			<h2>Login or Register</h2>
-			<form className="login-form" onSubmit={handleSubmit}>
-				<label htmlFor="username-login-input">Username {paw}</label>
-				<input
-					id="username-login-input"
-					name="username"
-					type="text"
-					value={name}
-					onChange={(event) => setName(event.target.value)}
-				></input>
-				<br />
-				<label htmlFor="password-login-input">Password {paw}</label>
-				<input
-					id="password-login-input"
-					name="password"
-					type="password"
-					value={password}
-					onChange={(event) => setPassword(event.target.value)}
-				></input>
-				<br />
-				<div>
-					<button type='submit'>Log in</button>
-					<p className='paragraph'>------------------ or ------------------</p>
-					<Link to="/register">
-						<button type='button'>Register</button>
-					</Link>
-				</div>
-			</form>
-		</div>
-        </>
-	);
+  return (
+    <>
+      <Logo />
+      <div className="login-container">
+        <h2>Login or Register</h2>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <label htmlFor="username-login-input">Username {paw}</label>
+          <input
+            id="username-login-input"
+            name="username"
+            type="text"
+            value={userName}
+            onChange={(event) => setUserName(event.target.value)}
+          ></input>
+          <br />
+          <label htmlFor="password-login-input">Password {paw}</label>
+          <input
+            id="password-login-input"
+            name="password"
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          ></input>
+          <br />
+          <div>
+            <button type="submit">Log in</button>
+            <p className="paragraph">
+              ------------------ or ------------------
+            </p>
+            <Link to="/register">
+              <button type="button">Register</button>
+            </Link>
+          </div>
+        </form>
+      </div>
+    </>
+  );
 }
 
 export default Login;

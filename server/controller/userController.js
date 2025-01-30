@@ -51,7 +51,7 @@ export const getUsersWithScores = async (req, res) => {
 export const findUser = async (req, res) => {
   try {
     const user = await User.findOne({
-      name: req.body.name,
+      name: req.body.userName,
       password: req.body.password,
     });
     if (user) {
@@ -62,7 +62,7 @@ export const findUser = async (req, res) => {
     }
   } catch (error) {
     //console.error(error);
-    res.status(500).json("Server error, unable to login user");
+    res.status(500).json({ message: "Server error, unable to login user"});
   }
 };
 

@@ -15,6 +15,7 @@ function Game (){
     const [secondCard, setSecondCard] = useState(null);
     const [stopFlip, setStopFlip] = useState(false);
     const [winner, setWinner] = useState(false)
+    const [imgCount, setImgCount] = useState(6);
 
     function shuffleDeck(array){
         for(let i = array.length - 1; i > 0; i--){
@@ -32,13 +33,27 @@ function Game (){
         return catArray
     }
 
+    async function fetchValidImages(requiredCount) {
+        const apiUrl = `https://api.thecatapi.com/v1/images/search?limit=${requiredCount}&api_key=live_Eh5ZLf7mKHLA9mwEJ5hoa8Rykvf1AKghBNe7bgTz41O6HpJmIw0CoTRgrxl2C1CT`
+        let uniqueImages = new Set();
+
+        while (uniqueImages.size < requiredCount) {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            data.forEach((datum) => {
+                if (!datum.url.endsWith(".gif")) {
+                    uniqueImages.add(datum.url);
+                }
+            });
+        }
+        return Array.from(uniqueImages).slice(0, requiredCount);
+    }
+
     useEffect(() => {
         const fetchData = async() => {
-            const data = await (await fetch("https://api.thecatapi.com/v1/images/search?limit=6&api_key=live_Eh5ZLf7mKHLA9mwEJ5hoa8Rykvf1AKghBNe7bgTz41O6HpJmIw0CoTRgrxl2C1CT")).json();
-            const cards = [];
-            data.map((datum) => {cards.push(datum.url)});
-            let deck = cards;
-            deck.push(...cards);
+            const cards = await fetchValidImages(imgCount);
+            let deck = [...cards, ...cards];
             shuffleDeck(deck);
             let catArray = addID(deck)
             setCats(catArray);

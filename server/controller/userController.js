@@ -3,6 +3,11 @@ import User from "../model/User.js";
 // Add a new user
 export const addUser = async (req, res) => {
   try {
+    const { name } = req.body;
+    const existingUser = await User.findOne({ name });
+
+    if (existingUser) return res.status(400).json({ success: false, message: `Username ${name} is already taken`});
+
     const newUser = await User.create({
       name: req.body.name,
       password: req.body.password,

@@ -6,30 +6,56 @@ import '../form.css';
 function Register() {
 	const [name, setName] = useState('');
 	const [password, setPassword] = useState('');
+	const [error, setError] = useState('');
 	const navigate = useNavigate();
     const paw = '🐾';
 
 
-	function handleSubmit(event) {
+	async function handleSubmit(event) {
 		event.preventDefault();
 
-		const data = { name, password };
+		const body = { name, password };
 
-		const options = {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(data),
-		};
+		try {
+			const response = await fetch('/api/users', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(body),
+			});
 
-		fetch('/api/users', options)
-			.then((response) => response.json())
+			const data = await response.json();
+
+			if (!response.ok) {
+				setError(data.message);
+				console.log(error)
+				alert(error);
+				setName('');
+				setPassword('');
+			} else {
+				if (error) setError('');
+				navigate('/');
+			}
+			
+		} catch (error) {
+			setError(`Authentication failed. ${error}`);
+		}
+
+		/*fetch('/api/users', options)
+			.then((response) => {
+				const responseJson = response.json();
+				if (!response.ok) {
+					console.log(responseJson);
+					setError(responseJson.message);
+				}
+				return responseJson;
+			})
 			.then((user) => {
 				console.log(user);
                 localStorage.setItem('user', JSON.stringify(user));
 				navigate('/Welcome');
 			})
 
-			.catch((error) => console.error(error));
+			.catch((error) => console.error(error));*/
 	}
 
 	return (
@@ -47,6 +73,7 @@ function Register() {
 					onChange={(event) => setName(event.target.value)}
 				></input>
 				<br />
+				{/*error && <p className='register-error'>{error}</p>*/}
 				<label htmlFor="password-register-input">Password {paw}</label>
 				<input
 					id="password-register-input"

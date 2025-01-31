@@ -6,6 +6,7 @@ import Register from "./components/Register.jsx";
 import Game from "./Game.jsx";
 import UserProfile from "./components/UserProfile.jsx";
 import UpdatePassword from "./components/UpdatePassword.jsx";
+import Layout from "./components/Layout.jsx";
 
 function App() {
   return (
@@ -16,13 +17,15 @@ function App() {
       }}
     >
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="register" element={<Register />} />
-        <Route path="welcome" element={<Welcome />} />
-        <Route path="/game" element={<Game />} />
-        <Route path="scoreboard" element={<Scoreboard />} />
-        <Route path="user-profile" element={<UserProfile />} />
-        <Route path="update-password" element={<UpdatePassword />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Welcome />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/game" element={<Game />} />
+          <Route path="/scoreboard" element={<Scoreboard />} />
+          <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/update-password" element={<UpdatePassword />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

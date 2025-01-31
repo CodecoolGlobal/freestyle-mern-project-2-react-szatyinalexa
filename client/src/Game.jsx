@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Game.css";
 import Card from "./components/Card.jsx";
-import Navbar from "./components/Navbar.jsx";
 import meows from "./components/audio.js";
 import purr from "./audio/catpurr.mp3";
 import useUser from "./hooks/useUser.js";
@@ -150,7 +149,6 @@ function Game() {
 
   return (
     <div>
-      <Navbar />
       <div className="game">
         {winner ? (
           <div className="winner-container">

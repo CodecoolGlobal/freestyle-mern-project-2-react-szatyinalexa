@@ -31,10 +31,10 @@ function Login() {
       } else {
         if (error) setError("");
         console.log(data);
-        localStorage.setItem('user', JSON.stringify(data.user));
-		localStorage.setItem('userId', data.user.id);
-		localStorage.setItem('userName', data.user.name);
-        navigate("/welcome");
+        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem("userId", data.user.id);
+        localStorage.setItem("userName", data.user.name);
+        navigate("/");
       }
     } catch (error) {
       setError(`Authentication failed. ${error}`);

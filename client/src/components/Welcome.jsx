@@ -1,7 +1,4 @@
-//import { useEffect, useState } from "react";
-import Navbar from "./Navbar.jsx";
 import useUser from "../hooks/useUser.js";
-import "../navbar.css";
 
 function Welcome() {
   const paw = "🐾";
@@ -10,7 +7,6 @@ function Welcome() {
 
   return (
     <>
-      <Navbar />
       <div className="welcome">
         <br />
         <br />
@@ -23,8 +19,8 @@ function Welcome() {
         </h1>
         <br />
         <h2>
-          Welcome <span>{user?.name.toUpperCase()}</span> to the Purrfectly Pawsome
-          Memory Game!
+          Welcome <span>{user?.name.toUpperCase()}</span> to the Purrfectly
+          Pawsome Meowmory Game!
         </h2>
         <br />
         <p>

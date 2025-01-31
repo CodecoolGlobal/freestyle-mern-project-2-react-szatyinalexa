@@ -20,7 +20,7 @@ function Navlinks() {
       {user ? (
         <Link to={'/user-profile'}><button>{user.name}</button></Link>
       ) : (
-      <Link to={'/'}><button>Login</button></Link>
+      <Link to={'/login'}><button>Login</button></Link>
       )}
     </div>
   )

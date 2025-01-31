@@ -34,7 +34,7 @@ function Login() {
         localStorage.setItem("user", JSON.stringify(data.user));
         localStorage.setItem("userId", data.user.id);
         localStorage.setItem("userName", data.user.name);
-        navigate("/welcome");
+        navigate("/");
       }
     } catch (error) {
       setError(`Authentication failed. ${error}`);

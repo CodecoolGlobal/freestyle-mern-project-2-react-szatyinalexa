@@ -16,14 +16,20 @@ p {
 }
 
 .paragraph {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 span {
   color: #e78c41;
 }
 
+.link-to-register {
+  font-weight: bold;
+}
 
+button {
+  font-size: 15px;
+}
 /* .navbar-header {
   box-sizing: border-box;
 } */

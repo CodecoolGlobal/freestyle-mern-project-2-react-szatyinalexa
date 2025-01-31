@@ -45,7 +45,7 @@ function Login() {
 
   return (
     <div className="login-container">
-      <h2>Login or Register</h2>
+      <h2>Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="username-login-input">Username {paw}</label>
         <input
@@ -67,10 +67,8 @@ function Login() {
         <br />
         <div>
           <button type="submit">Log in</button>
-          <p className="paragraph">------------------ or ------------------</p>
-          <Link to="/register">
-            <button type="button">Register</button>
-          </Link>
+          <p className="paragraph">Don&#39;t have an account yet?</p>
+          <Link className="link-to-register" to="/register">Register</Link>
         </div>
       </form>
     </div>

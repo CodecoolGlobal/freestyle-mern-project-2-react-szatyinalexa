@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from 'react';
+import { UserContext } from './UserContext';
 import "../navbar.css";
 import "../form.css";
 
 function UpdatePassword() {
   const [currentPassword, setCurrentPassword] = useState("");
   const [password, setPassword] = useState("");
+  const { user } = useContext(UserContext);
   const navigate = useNavigate();
 
   async function handleUpdatePassword(event) {
@@ -21,8 +24,7 @@ function UpdatePassword() {
     };
 
     try {
-      const userId = JSON.parse(localStorage.getItem("user")).id;
-      const response = await fetch(`/api/users/${userId}`, options);
+      const response = await fetch(`/api/users/${user.id}`, options);
       if (response.ok) {
         navigate("/user-profile");
       } else {

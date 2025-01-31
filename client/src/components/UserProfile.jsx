@@ -13,7 +13,7 @@ function UserProfile() {
     navigate("/");
   }
 
-  async function handleDeleteAccount(id) {
+  async function handleDeleteAccount() {
     alert(`Deleting your account... We are sorry to see you go, ${user.name}`);
 
     const options = {
@@ -24,7 +24,7 @@ function UserProfile() {
     };
 
     try {
-      const response = await fetch(`/api/users/${id}`, options);
+      const response = await fetch(`/api/users/${user.id}`, options);
       if (response.ok) {
         console.log("User is deleted.");
         localStorage.removeItem("user");
@@ -57,7 +57,7 @@ function UserProfile() {
           <button onClick={handleLogout}>Logout</button>
           <br />
           <br />
-          <button onClick={() => handleDeleteAccount(user._id)}>
+          <button onClick={() => handleDeleteAccount()}>
             Delete Account
           </button>
         </>

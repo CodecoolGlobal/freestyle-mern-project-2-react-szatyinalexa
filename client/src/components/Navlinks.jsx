@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
-import useUser from '../hooks/useUser';
 
 import meows from './audio';
+import { useContext } from 'react';
+import { UserContext } from './UserContext';
 
 function playRandomMeow() {
   const randomNum = Math.floor(Math.random() * (meows.length - 0));
@@ -10,8 +11,9 @@ function playRandomMeow() {
 }
 
 function Navlinks() {
-  const [user] = useUser();
-  console.log(user ? user : "it's falsy");
+  const { user } = useContext(UserContext);
+  console.log(user ? user.name : "it's falsy");
+  console.log(localStorage.getItem('user')?.name);
   return (
     <div className='buttons'>
       <button onClick={playRandomMeow}>Meow</button>

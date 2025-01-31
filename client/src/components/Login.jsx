@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
 import "../form.css";
+import { UserContext } from "./UserContext";
 
 function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   const [error, setError] = useState("");
+
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
   const paw = "🐾";
 
@@ -31,9 +34,9 @@ function Login() {
       } else {
         if (error) setError("");
         console.log(data);
-        localStorage.setItem("user", JSON.stringify(data.user));
-        localStorage.setItem("userId", data.user.id);
-        localStorage.setItem("userName", data.user.name);
+		const userData = data.user;
+        localStorage.setItem("user", userData);
+		setUser(userData);
         navigate("/");
       }
     } catch (error) {

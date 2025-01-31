@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "./Game.css";
 import Card from "./components/Card.jsx";
 import meows from "./components/audio.js";
 import purr from "./audio/catpurr.mp3";
-import useUser from "./hooks/useUser.js";
+import { UserContext } from "./components/UserContext.jsx";
 
 function Game() {
   const imageUrl = "./src/images/backofcard.jpg";
@@ -15,7 +15,7 @@ function Game() {
   const [winner, setWinner] = useState(false);
   const [imgCount, setImgCount] = useState(6);
 
-  const [user, setUser] = useUser();
+  const { user, setUser } = useContext(UserContext);
 
   function shuffleDeck(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -107,7 +107,7 @@ function Game() {
         console.log("successfully updated score");
         setUser(updatedUser);
 
-        localStorage.setItem("user", JSON.stringify(updatedUser));
+        localStorage.setItem("user", updatedUser);
       }
     } catch (error) {
       console.error(error);

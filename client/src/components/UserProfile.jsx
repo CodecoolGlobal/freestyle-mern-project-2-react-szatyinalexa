@@ -1,13 +1,15 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../navbar.css";
-import useUser from "../hooks/useUser.js";
+import { useContext } from "react";
+import { UserContext } from "./UserContext.jsx";
 
 function UserProfile() {
-  const [user] = useUser();
+  const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   function handleLogout() {
     localStorage.removeItem("user");
+	setUser(null);
     navigate("/");
   }
 

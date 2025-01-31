@@ -32,6 +32,8 @@ function Login() {
         setError(data.message);
 		console.log(error);
         alert(data.message);
+		setUserName("");
+		setPassword("");
       } else {
         if (error) setError("");
         console.log(data);
@@ -54,7 +56,7 @@ function Login() {
           id="username-login-input"
           name="username"
           type="text"
-          value={error ? "" : userName}
+          value={userName}
           onChange={(event) => setUserName(event.target.value)}
         ></input>
         <br />
@@ -63,7 +65,7 @@ function Login() {
           id="password-login-input"
           name="password"
           type="password"
-          value={error ? "" : password}
+          value={password}
           onChange={(event) => setPassword(event.target.value)}
         ></input>
         <br />

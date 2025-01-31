@@ -18,7 +18,7 @@ export const addUser = async (req, res) => {
       createdAt: Date.now(),
     });
 
-    res.json(newUser);
+    res.status(201).json(newUser);
   } catch (error) {
     console.error(error);
     res
@@ -32,7 +32,7 @@ export const getUsers = async (req, res) => {
   try {
     const users = await User.find({});
     const sortedUsers = [...users].sort((a, b) => a.score - b.score);
-    res.json(sortedUsers);
+    res.status(200).json(sortedUsers);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -43,7 +43,7 @@ export const getUsersWithScores = async (req, res) => {
   try {
     const users = await User.find({ score: { $gt: 0 } });
     const usersWithScores = [...users].sort((a, b) => b.score - a.score);
-    res.json(usersWithScores);
+    res.status(200).json(usersWithScores);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -63,9 +63,9 @@ export const findUser = async (req, res) => {
         name: user.name,
         score: user.score,
       };
-      res.json({ success: true, user: userData });
+      res.status(200).json({ success: true, user: userData });
     } else {
-      res.json({ success: false, message: "User not found." });
+      res.status(404).json({ success: false, message: "Invalid username or password" });
     }
   } catch (error) {
     res.status(500).json({ message: "Server error, unable to login user" });
@@ -77,7 +77,7 @@ export const deleteUser = async (req, res) => {
   try {
     const result = await User.deleteOne({ _id: req.params.id });
     if (result.deletedCount === 1) {
-      res.json({ success: true, message: "User deleted successfully" });
+      res.status(200).json({ success: true, message: "User deleted successfully" });
     } else {
       res.status(404).json({ success: false, message: "User not found." });
     }

@@ -28,8 +28,10 @@ function Login() {
       const data = await response.json();
 
       if (!response.ok) {
+		console.log(data.message);
         setError(data.message);
-        alert(error);
+		console.log(error);
+        alert(data.message);
       } else {
         if (error) setError("");
         console.log(data);
@@ -52,7 +54,7 @@ function Login() {
           id="username-login-input"
           name="username"
           type="text"
-          value={userName}
+          value={error ? "" : userName}
           onChange={(event) => setUserName(event.target.value)}
         ></input>
         <br />
@@ -61,7 +63,7 @@ function Login() {
           id="password-login-input"
           name="password"
           type="password"
-          value={password}
+          value={error ? "" : password}
           onChange={(event) => setPassword(event.target.value)}
         ></input>
         <br />

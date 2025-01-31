@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "./Logo";
 import "../form.css";
 
 function Register() {
@@ -41,40 +40,37 @@ function Register() {
   }
 
   return (
-    <>
-      <Logo />
-      <div>
-        <h2>Register</h2>
-        <form className="register-form" onSubmit={handleSubmit}>
-          <label htmlFor="username-register-input">Username {paw}</label>
-          <input
-            id="username-register-input"
-            name="username"
-            type="text"
-            value={userName}
-            onChange={(event) => setUserName(event.target.value)}
-          ></input>
-          <br />
-          <label htmlFor="password-register-input">Password {paw}</label>
-          <input
-            id="password-register-input"
-            name="password"
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          ></input>
-          <br />
-          <div>
-            <button type="submit">Register</button>
-            <Link to="/">
-              <button id="cancel-btn" type="button">
-                Cancel
-              </button>
-            </Link>
-          </div>
-        </form>
-      </div>
-    </>
+    <div>
+      <h2>Register</h2>
+      <form className="register-form" onSubmit={handleSubmit}>
+        <label htmlFor="username-register-input">Username {paw}</label>
+        <input
+          id="username-register-input"
+          name="username"
+          type="text"
+          value={userName}
+          onChange={(event) => setUserName(event.target.value)}
+        ></input>
+        <br />
+        <label htmlFor="password-register-input">Password {paw}</label>
+        <input
+          id="password-register-input"
+          name="password"
+          type="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+        ></input>
+        <br />
+        <div>
+          <button type="submit">Register</button>
+          <Link to="/">
+            <button id="cancel-btn" type="button">
+              Cancel
+            </button>
+          </Link>
+        </div>
+      </form>
+    </div>
   );
 }
 

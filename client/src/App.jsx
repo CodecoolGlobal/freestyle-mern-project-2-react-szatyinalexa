@@ -7,27 +7,30 @@ import Game from "./Game.jsx";
 import UserProfile from "./components/UserProfile.jsx";
 import UpdatePassword from "./components/UpdatePassword.jsx";
 import Layout from "./components/Layout.jsx";
+import { UserProvider } from "./components/UserContext.jsx";
 
 function App() {
   return (
-    <BrowserRouter
-      future={{
-        v7_startTransition: true,
-        v7_relativeSplatPath: true,
-      }}
-    >
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Welcome />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/game" element={<Game />} />
-          <Route path="/scoreboard" element={<Scoreboard />} />
-          <Route path="/user-profile" element={<UserProfile />} />
-          <Route path="/update-password" element={<UpdatePassword />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Welcome />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/game" element={<Game />} />
+            <Route path="/scoreboard" element={<Scoreboard />} />
+            <Route path="/user-profile" element={<UserProfile />} />
+            <Route path="/update-password" element={<UpdatePassword />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 

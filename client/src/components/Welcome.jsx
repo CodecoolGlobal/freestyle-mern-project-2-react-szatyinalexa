@@ -1,9 +1,10 @@
-import useUser from "../hooks/useUser.js";
+import { useContext } from "react";
+import { UserContext } from "./UserContext.jsx";
 
 function Welcome() {
   const paw = "🐾";
   const cat = "😺";
-  const [user] = useUser();
+  const { user } = useContext(UserContext);
 
   return (
     <>

@@ -168,7 +168,7 @@ function Game() {
                 width={200}
                 height={250}
                 backOfImage={imageUrl}
-                handleClick={handleClick}
+                onClick={handleClick}
                 selected={
                   cat === firstCard ||
                   cat === secondCard ||

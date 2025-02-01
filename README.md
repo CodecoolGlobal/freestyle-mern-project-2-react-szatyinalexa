@@ -21,6 +21,7 @@
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
+    <li><a href="#contributors">Contributors</a></li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
@@ -52,6 +53,17 @@ Hope you have fun with it!
   [![Vite][Vite]][Vite-url]
   [![CSS3][CSS3]]  
   
+### Contributors:
+
+- **Molnár Marianna**   
+    GitHub: https://github.com/MariannaMolnar  
+    [![LinkedIn][linkedin-shield]][linkedin-url-m]
+- **Szatyina Alexa**
+    GitHub: https://github.com/szatyinalexa  
+    [![LinkedIn][linkedin-shield]][linkedin-url-a]
+- **Oláhné Klár Erika**    
+    GitHub: https://github.com/o-k-e  
+    [![LinkedIn][linkedin-shield]][linkedin-url-e]
 
 
 <!-- GETTING STARTED -->
@@ -194,4 +206,6 @@ CTRL + C
 [CatAPI-url]: https://thecatapi.com/
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/marianna-molnar-21956289
+[linkedin-url-m]: https://www.linkedin.com/in/marianna-molnar-21956289
+[linkedin-url-a]: linkedin.com/in/alexa-szatyina-29925632b
+[linkedin-url-e]: linkedin.com/in/erika-klar

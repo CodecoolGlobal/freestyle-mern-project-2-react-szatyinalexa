@@ -51,7 +51,7 @@ Hope you have fun with it!
 - Frontend:  
   [![React][React.js]][React-url]
   [![Vite][Vite]][Vite-url]
-  [![CSS3][CSS3]]  
+  ![CSS3][CSS3]  
   
 ### Contributors:
 

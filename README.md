@@ -105,7 +105,7 @@ Here you find the steps of the installation of our project:
    VITE_CAT_API_KEY="your_cat_api_key"
    ```
 
-   Make sure that the credentials you provide are secure and appropriate for your environment and to get your API key from The Cat API - [Get you API key][CatAPI-url].
+   Make sure that the credentials you provide are secure and appropriate for your environment and to get your API key from The Cat API - [Get your API key][CatAPI-url].
 
 3. Running the Project
 
@@ -173,7 +173,7 @@ CTRL + C
   Ensure your MongoDB Atlas cluster allows connections from your IP (0.0.0.0/0 for all IPs).  
   Verify that DATABASE_URL in .env is correct.
 - TheCatAPI Not Working:
-  Ensure you have a valid API key in client/.env. [Get you API key][CatAPI-url]
+  Ensure you have a valid API key in client/.env. [Get your API key][CatAPI-url]
 
 
 <!-- ROADMAP -->

@@ -50,8 +50,8 @@ Hope you have fun with it!
 - Frontend:  
   [![React][React.js]][React-url]
   [![Vite][Vite]][Vite-url]
-  [![CSS3][CSS3]]
-
+  [![CSS3][CSS3]]  
+  
 
 
 <!-- GETTING STARTED -->
@@ -93,7 +93,7 @@ Here you find the steps of the installation of our project:
    VITE_CAT_API_KEY="your_cat_api_key"
    ```
 
-   Make sure that the credentials you provide are secure and appropriate for your environment.
+   Make sure that the credentials you provide are secure and appropriate for your environment and to get your API key from The Cat API - [Get you API key][CatAPI-url].
 
 3. Running the Project
 
@@ -136,9 +136,11 @@ Once the services are running, you can access the frontend to interact with the 
 
 You can play without registering or logging in, but you are only able to gain scores if you play while logged in. Once you have a profile, you can change your password, advance in the scoreboard if keep playing and you can also delete your profile.
 
+
 This is the landing page for users without login:
 
 ![Website Landing Screenshot](client/src/images/landing-page.png)
+
 
 This is the game page:
 
@@ -149,6 +151,27 @@ This is the game page:
 
 To stop running the project by pressing following keys:
 CTRL + C
+
+
+### Troubleshooting
+
+- Port Conflicts:
+  Ensure ports 3000 and 5173 are not in use by other processes.
+- MongoDB Connection Issues:
+  Ensure your MongoDB Atlas cluster allows connections from your IP (0.0.0.0/0 for all IPs).  
+  Verify that DATABASE_URL in .env is correct.
+- TheCatAPI Not Working:
+  Ensure you have a valid API key in client/.env. [Get you API key][CatAPI-url]
+
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] Add README
+- [ ] Add difficulty levels
+- [ ] Testing
+    - [ ] Set up CI/CD pipeline
+    - [ ] Increase coverage with unit tests
 
 
 [MongoDB]: https://img.shields.io/badge/-MongoDB-13aa52?style=for-the-badge&logo=mongodb&logoColor=white
@@ -168,6 +191,7 @@ CTRL + C
 
 [CSS3]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
 
+[CatAPI-url]: https://thecatapi.com/
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/marianna-molnar-21956289

@@ -58,7 +58,7 @@ Hope you have fun with it!
 - **Molnár Marianna**   
     GitHub: https://github.com/MariannaMolnar  
     [![LinkedIn][linkedin-shield]][linkedin-url-m]
-- **Szatyina Alexa**
+- **Szatyina Alexa**  
     GitHub: https://github.com/szatyinalexa  
     [![LinkedIn][linkedin-shield]][linkedin-url-a]
 - **Oláhné Klár Erika**    

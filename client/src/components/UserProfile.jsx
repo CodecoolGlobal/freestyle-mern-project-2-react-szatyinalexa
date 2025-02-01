@@ -9,7 +9,7 @@ function UserProfile() {
 
   function handleLogout() {
     localStorage.removeItem("user");
-	setUser(null);
+    setUser(null);
     navigate("/");
   }
 
@@ -26,7 +26,7 @@ function UserProfile() {
     try {
       const response = await fetch(`/api/users/${user.id}`, options);
       if (response.ok) {
-		handleLogout();
+        handleLogout();
       } else {
         console.error("Failed to delete user");
       }
@@ -55,9 +55,7 @@ function UserProfile() {
           <button onClick={handleLogout}>Logout</button>
           <br />
           <br />
-          <button onClick={() => handleDeleteAccount()}>
-            Delete Account
-          </button>
+          <button onClick={() => handleDeleteAccount()}>Delete Account</button>
         </>
       )}
       {!user && <p>Loading...</p>}

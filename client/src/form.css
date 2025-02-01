@@ -1,73 +1,67 @@
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  form label {
-    align-self: flex-start;
-      margin-top: 10px;
-      margin-bottom: 5px;
-  }
-  
-  form input {
-    width: 100%;
-    max-width: 300px;
-    padding: 8px;
-    margin: 5px 0;
-    box-sizing: border-box;
-    border-radius: 5px;
-  }
-  
-  form button {
-    width: 100%;
-    max-width: 300px;
-    padding: 10px;
-    margin: 10px 0;
-    /* background-color: #4CAF50; */
-    background-color: #e7995a;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  form button:hover {
-    /* background-color: #45a049; */
-    background-color: #e78c41;
-  }
-  
-  form div {
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  form p {
-    text-align: center;
-    margin: 10px 0;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  width: 100%;
+  max-width: 300px;
+}
 
-  .login-form,
-  .register-form,
-  .password-update-form {
-    margin: 0 auto;
-  }
+form label {
+  align-self: flex-start;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
 
-  #cancel-btn,
-  #cancel-password-btn {
-    background-color: rgb(197, 191, 191); 
-  }
+form input {
+  width: 100%;
+  max-width: 300px;
+  padding: 8px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
 
-  #cancel-btn:hover
-  #cancel-password-btn:hover {
-    background-color: rgb(179, 170, 170); 
-  }
+form button {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #e7995a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
+form button:hover {
+  background-color: #e78c41;
+}
 
-  
+form div {
+  width: 100%;
+  max-width: 300px;
+}
+
+form p {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.login-form,
+.register-form,
+.password-update-form {
+  margin: 0 auto;
+}
+
+#cancel-btn,
+#cancel-password-btn {
+  background-color: rgb(197, 191, 191);
+}
+
+#cancel-btn:hover #cancel-password-btn:hover {
+  background-color: rgb(179, 170, 170);
+}

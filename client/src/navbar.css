@@ -1,83 +1,77 @@
-/* body {
-    margin: 0;
-    padding: 0;
-}
- */
-
 .logo-container {
-    height: 4rem;
-    width: 4rem;
-    padding: 0px;
+  height: 4rem;
+  width: 4rem;
+  padding: 0px;
 }
 
 .logo-link-home {
-    display: flex;
-    gap: 0.25rem;
-    font: bold;
-    place-items: center;
+  display: flex;
+  gap: 0.25rem;
+  font: bold;
+  place-items: center;
 }
 
 .logo {
-    position: relative;
+  position: relative;
 }
 
 .logo img {
-    position: absolute;
-    height: auto;
-    width: 64px;
+  position: absolute;
+  height: auto;
+  width: 64px;
 }
 
 .navigations nav {
-    display: flex;
-    width: 33.333333%;
-    justify-content: end;
+  display: flex;
+  width: 33.333333%;
+  justify-content: end;
 }
 
 .navigations div {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .navbar-header {
-    background-color: #f7cbcb54;
-    position: relative;
-    top: 0px;
-    display: flex;
-    flex-wrap: wrap;
-    z-index: 20;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    place-items: center;
-    justify-content: space-between;
-    border: 0px solid;
-    border-bottom-width: 1px;
-    border-color: rgb(107 114 128);
-    padding: 2rem;
-    box-sizing: border-box;
+  background-color: #f7cbcb54;
+  position: relative;
+  top: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 20;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  place-items: center;
+  justify-content: space-between;
+  border: 0px solid;
+  border-bottom-width: 1px;
+  border-color: rgb(107 114 128);
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 .navigations button {
-    background-color: #F7CBCB;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-    border-radius: 4px;
+  background-color: #f7cbcb;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
 .navigations button:hover {
-    background-color: #fab1b1;
+  background-color: #fab1b1;
 }
 
 .buttons {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }

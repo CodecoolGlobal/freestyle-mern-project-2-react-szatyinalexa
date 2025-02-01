@@ -57,7 +57,6 @@ export const findUser = async (req, res) => {
       password: req.body.password,
     });
     if (user) {
-
       const userData = {
         id: user._id,
         name: user.name,
@@ -65,7 +64,9 @@ export const findUser = async (req, res) => {
       };
       res.status(200).json({ success: true, user: userData });
     } else {
-      res.status(404).json({ success: false, message: "Invalid username or password" });
+      res
+        .status(404)
+        .json({ success: false, message: "Invalid username or password" });
     }
   } catch (error) {
     res.status(500).json({ message: "Server error, unable to login user" });
@@ -77,7 +78,9 @@ export const deleteUser = async (req, res) => {
   try {
     const result = await User.deleteOne({ _id: req.params.id });
     if (result.deletedCount === 1) {
-      res.status(200).json({ success: true, message: "User deleted successfully" });
+      res
+        .status(200)
+        .json({ success: true, message: "User deleted successfully" });
     } else {
       res.status(404).json({ success: false, message: "User not found." });
     }

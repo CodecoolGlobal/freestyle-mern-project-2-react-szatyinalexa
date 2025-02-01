@@ -34,7 +34,8 @@ function Game() {
   }
 
   async function fetchValidImages(requiredCount) {
-    const apiUrl = `https://api.thecatapi.com/v1/images/search?limit=${requiredCount}&api_key=live_Eh5ZLf7mKHLA9mwEJ5hoa8Rykvf1AKghBNe7bgTz41O6HpJmIw0CoTRgrxl2C1CT`;
+    const apiKey = import.meta.env.VITE_CAT_API_KEY;
+    const apiUrl = `https://api.thecatapi.com/v1/images/search?limit=${requiredCount}&api_key=${apiKey}`;
     let uniqueImages = new Set();
 
     while (uniqueImages.size < requiredCount) {

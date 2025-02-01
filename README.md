@@ -50,6 +50,51 @@ Hope you have fun with it!
 - Frontend:  
   [![React][React.js]][React-url]
   [![Vite][Vite]][Vite-url]
+  [![CSS3][CSS3]]
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+Before running the project, ensure you have the following installed:
+- Node.js (v21.4.0) – Download
+- MongoDB Atlas account – Sign up
+
+Here you find the steps of the installation of our project:
+1. Clone the repository
+    ```
+    git clone https://github.com/CodecoolGlobal/freestyle-mern-project-2-react-szatyinalexa.git
+    cd freestyle-mern-project-2-react-szatyinalexa
+    ```
+
+2. Configure Environment Variables
+
+   To set up your environment variables, simply copy and rename the `.env.example` files to `.env` in the server and client directories. You can do this using the following terminal command:
+
+    ```bash
+    cp .env.example .env
+    ```
+
+   Once copied, open the `.env` files and update the values to match your credentials and environment settings. For example:
+
+   /server/.env
+   ```plaintext
+   DATABASE_URL="your_mongodb_connection_string"
+   ```
+
+   /client/.env
+   ```plaintext
+   VITE_CAT_API_KEY="your_cat_api_key"
+   ```
+
+   Make sure that the credentials you provide are secure and appropriate for your environment.
+
 
 
 [MongoDB]: https://img.shields.io/badge/-MongoDB-13aa52?style=for-the-badge&logo=mongodb&logoColor=white
@@ -66,6 +111,9 @@ Hope you have fun with it!
 
 [Vite]: https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white
 [Vite-url]: https://vitejs.dev/
+
+[CSS3]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
+
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/marianna-molnar-21956289

@@ -63,8 +63,8 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 
 Before running the project, ensure you have the following installed:
-- Node.js (v21.4.0) – Download
-- MongoDB Atlas account – Sign up
+- Node.js (v21.4.0) – [Download][Node.js-url]
+- MongoDB Atlas account – [Sign up][MongoDB-url]
 
 Here you find the steps of the installation of our project:
 1. Clone the repository
@@ -95,6 +95,60 @@ Here you find the steps of the installation of our project:
 
    Make sure that the credentials you provide are secure and appropriate for your environment.
 
+3. Running the Project
+
+    Seed the database by running seed.js:
+    ```
+    cd server
+    node seed.js
+    ```
+
+    Start the server by entering in your terminal the following command:
+    ````
+    cd server
+    npm start
+    ````
+
+    Start the frontend with the following command:
+    ````
+    cd client
+    npm run dev
+    ````
+
+   These commands will:
+    - Build and start the MongoDB database with inital data.
+    - Start the server.
+    - Start the Vite React frontend.
+
+   Now, your frontend should be running at:
+🔗 http://localhost:5173 (default Vite port)
+
+   Your backend should be running at:
+🔗 http://localhost:3000 (default Express port)
+
+   The services will be available at:
+🔗 http://localhost:5173
+
+
+### Usage
+
+Once the services are running, you can access the frontend to interact with the application and the backend API for examining purposes.
+
+You can play without registering or logging in, but you are only able to gain scores if you play while logged in. Once you have a profile, you can change your password, advance in the scoreboard if keep playing and you can also delete your profile.
+
+This is the landing page for users without login:
+
+![Website Landing Screenshot](client/src/images/landing-page.png)
+
+This is the game page:
+
+![Game Screenshot](client/src/images/game2.png)
+
+
+### Stopping the Project
+
+To stop running the project by pressing following keys:
+CTRL + C
 
 
 [MongoDB]: https://img.shields.io/badge/-MongoDB-13aa52?style=for-the-badge&logo=mongodb&logoColor=white

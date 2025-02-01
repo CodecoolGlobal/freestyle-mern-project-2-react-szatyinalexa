@@ -17,8 +17,6 @@ function Scoreboard() {
     getUsersSortedByScore();
   }, []);
 
-  console.log(users);
-
   if (!users) {
     return <div>Loading</div>;
   }

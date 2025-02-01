@@ -28,15 +28,12 @@ function Login() {
       const data = await response.json();
 
       if (!response.ok) {
-		console.log(data.message);
         setError(data.message);
-		console.log(error);
         alert(data.message);
-		setUserName("");
-		setPassword("");
+        setUserName("");
+        setPassword("");
       } else {
         if (error) setError("");
-        console.log(data);
         const userData = data.user;
         localStorage.setItem("user", userData);
         setUser(userData);
@@ -72,7 +69,9 @@ function Login() {
         <div>
           <button type="submit">Log in</button>
           <p className="paragraph">Don&#39;t have an account yet?</p>
-          <Link className="link-to-register" to="/register">Register</Link>
+          <Link className="link-to-register" to="/register">
+            Register
+          </Link>
         </div>
       </form>
     </div>

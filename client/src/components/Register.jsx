@@ -26,7 +26,6 @@ function Register() {
 
       if (!response.ok) {
         setError(data.message);
-        console.log(error);
         alert(error);
         setUserName("");
         setPassword("");

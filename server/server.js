@@ -1,8 +1,7 @@
-import { config } from 'dotenv';
-import mongoose from 'mongoose';
-import express from 'express';
-import User from './model/User.js';
-import userRoutes from './routes/userRoutes.js';
+import { config } from "dotenv";
+import mongoose from "mongoose";
+import express from "express";
+import userRoutes from "./routes/userRoutes.js";
 
 config();
 
@@ -14,11 +13,11 @@ app.use(express.json());
 app.use("/api/users", userRoutes);
 
 async function main() {
-	await mongoose.connect(process.env.DATABASE_URL);
+  await mongoose.connect(process.env.DATABASE_URL);
 
-	app.listen(3000, () =>
-		console.log({ message: 'Server is running on port 3000' })
-	);
+  app.listen(3000, () =>
+    console.log({ message: "Server is running on port 3000" })
+  );
 }
 
 main();

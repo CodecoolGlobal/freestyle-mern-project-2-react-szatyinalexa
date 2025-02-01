@@ -156,7 +156,7 @@ function Game() {
             <h1 className="winner-message">
               Congratulations, you matched all the kitties!
               {playPurr()}
-              <h3 className="current-score">Score: {user?.score}</h3>
+              {user && <h3 className="current-score">Score: {user?.score}</h3>}
             </h1>
           </div>
         ) : cats ? (

@@ -26,9 +26,7 @@ function UserProfile() {
     try {
       const response = await fetch(`/api/users/${user.id}`, options);
       if (response.ok) {
-        console.log("User is deleted.");
-        localStorage.removeItem("user");
-        navigate("/");
+		handleLogout();
       } else {
         console.error("Failed to delete user");
       }

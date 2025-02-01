@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../form.css";
 
 function Register() {
-  const [userName, setUserName] = useState("");
+  const [name, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
   const [error, setError] = useState("");
@@ -13,7 +13,7 @@ function Register() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const body = { userName, password };
+    const body = { name, password };
 
     try {
       const response = await fetch("/api/users", {
@@ -32,7 +32,7 @@ function Register() {
         setPassword("");
       } else {
         if (error) setError("");
-        navigate("/");
+        navigate("/login");
       }
     } catch (error) {
       setError(`Authentication failed. ${error}`);
@@ -48,7 +48,7 @@ function Register() {
           id="username-register-input"
           name="username"
           type="text"
-          value={userName}
+          value={name}
           onChange={(event) => setUserName(event.target.value)}
         ></input>
         <br />

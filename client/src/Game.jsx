@@ -7,6 +7,9 @@ import { UserContext } from "./components/UserContext.jsx";
 
 function Game() {
   const imageUrl = "./src/images/backofcard.jpg";
+  const cardWidth = 200;
+  const cardHeight = 250;
+  const idealWidthHeightRatio = cardWidth / cardHeight;
 
   const [cats, setCats] = useState(null);
   const [firstCard, setFirstCard] = useState(null);
@@ -35,7 +38,7 @@ function Game() {
 
   async function fetchValidImages(requiredCount) {
     const apiKey = import.meta.env.VITE_CAT_API_KEY;
-    const apiUrl = `https://api.thecatapi.com/v1/images/search?limit=${requiredCount}&api_key=${apiKey}`;
+    const apiUrl = `https://api.thecatapi.com/v1/images/search?limit=${requiredCount}&mime_types=jpg,png&api_key=${apiKey}`;
     let uniqueImages = new Set();
 
     while (uniqueImages.size < requiredCount) {
@@ -43,7 +46,8 @@ function Game() {
       const data = await response.json();
 
       data.forEach((datum) => {
-        if (!datum.url.endsWith(".gif")) {
+        const widthHeightRatio = datum.width / datum.height;
+        if (widthHeightRatio >= idealWidthHeightRatio - 0.2 && widthHeightRatio <= idealWidthHeightRatio + 0.2) {
           uniqueImages.add(datum.url);
         }
       });

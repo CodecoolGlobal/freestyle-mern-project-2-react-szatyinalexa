@@ -15,12 +15,15 @@ export const getCatPics = async (req, res) => {
       .sort({ usedCount: 1, lastUsed: 1 })
       .limit(requiredCount);
 
-    const images = [...imagesFromDB];
+    const images = imagesFromDB.map((iamgeObj) => iamgeObj.link);
     if (imagesFromDB.length < requiredCount) {
       const imagesFromApi = await fetchValidImages(
         requiredCount - imagesFromDB.length
       );
-      images.push(...imagesFromApi);
+      //images.push(...imagesFromApi);
+      imagesFromApi.forEach((newImage) => {
+        images.push(newImage.link);
+      })
       await saveNewCatPicsFromApi(imagesFromApi);
     }
     res.status(200).json(images);

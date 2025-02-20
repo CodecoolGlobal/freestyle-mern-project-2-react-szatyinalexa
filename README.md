@@ -87,22 +87,18 @@ Here you find the steps of the installation of our project:
 
 2. Configure Environment Variables
 
-   To set up your environment variables, simply copy and rename the `.env.example` files to `.env` in the server and client directories. You can do this using the following terminal command:
+   To set up your environment variables, simply copy and rename the `.env.example` file to `.env` in the server directory. You can do this using the following terminal command:
 
     ```bash
     cp .env.example .env
     ```
 
-   Once copied, open the `.env` files and update the values to match your credentials and environment settings. For example:
+   Once copied, open the `.env` file and update the values to match your credentials and environment settings. For example:
 
    /server/.env
    ```plaintext
    DATABASE_URL="your_mongodb_connection_string"
-   ```
-
-   /client/.env
-   ```plaintext
-   VITE_CAT_API_KEY="your_cat_api_key"
+   CAT_API_KEY="your_cat_api_key"
    ```
 
    Make sure that the credentials you provide are secure and appropriate for your environment and to get your API key from The Cat API - [Get your API key][CatAPI-url].

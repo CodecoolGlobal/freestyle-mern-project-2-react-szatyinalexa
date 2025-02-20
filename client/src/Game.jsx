@@ -9,7 +9,6 @@ function Game() {
   const imageUrl = "./src/images/backofcard.jpg";
   const cardWidth = 200;
   const cardHeight = 250;
-  const idealWidthHeightRatio = cardWidth / cardHeight;
 
   const [cats, setCats] = useState(null);
   const [firstCard, setFirstCard] = useState(null);
@@ -17,6 +16,7 @@ function Game() {
   const [stopFlip, setStopFlip] = useState(false);
   const [winner, setWinner] = useState(false);
   const [imgCount, setImgCount] = useState(6);
+  const [error, setError] = useState("");
 
   const { user, setUser } = useContext(UserContext);
 
@@ -37,22 +37,24 @@ function Game() {
   }
 
   async function fetchValidImages(requiredCount) {
-    const apiKey = import.meta.env.VITE_CAT_API_KEY;
-    const apiUrl = `https://api.thecatapi.com/v1/images/search?limit=${requiredCount}&mime_types=jpg,png&api_key=${apiKey}`;
-    let uniqueImages = new Set();
+    try {
+      const response = await fetch(`/api/catPics?count=${requiredCount}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
 
-    while (uniqueImages.size < requiredCount) {
-      const response = await fetch(apiUrl);
       const data = await response.json();
 
-      data.forEach((datum) => {
-        const widthHeightRatio = datum.width / datum.height;
-        if (widthHeightRatio >= idealWidthHeightRatio - 0.2 && widthHeightRatio <= idealWidthHeightRatio + 0.2) {
-          uniqueImages.add(datum.url);
-        }
-      });
+      if (!response.ok) {
+        setError(data.message);
+        alert(data.message);
+      } else {
+        setError("");
+        return data;
+      }
+    } catch (error) {
+      setError(`Error has occured while fetching images: ${error}`);
     }
-    return Array.from(uniqueImages).slice(0, requiredCount);
   }
 
   useEffect(() => {
@@ -169,8 +171,8 @@ function Game() {
               <Card
                 key={cat.id}
                 cat={cat}
-                width={200}
-                height={250}
+                width={cardWidth}
+                height={cardHeight}
                 backOfImage={imageUrl}
                 onClick={handleClick}
                 selected={
